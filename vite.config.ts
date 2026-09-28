@@ -8,12 +8,19 @@ import { viteSingleFile } from "vite-plugin-singlefile";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), viteSingleFile()],
+  base: "/Esoo/",
+  plugins: [
+    react(),
+    tailwindcss(),
+    viteSingleFile({ removeViteModuleLoader: true }),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
+  },
+  build: {
+    assetsInlineLimit: 0, // ← مهم: خلي الصور تتحط في ملفات منفصلة
   },
 });
