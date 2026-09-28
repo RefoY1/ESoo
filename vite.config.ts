@@ -10,17 +10,13 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   base: "/Esoo/",
-  plugins: [
-    react(),
-    tailwindcss(),
-    viteSingleFile({ removeViteModuleLoader: true }),
-  ],
+  plugins: [react(), tailwindcss(), viteSingleFile()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
   },
   build: {
-    assetsInlineLimit: 0, // ← مهم: خلي الصور تتحط في ملفات منفصلة
+    assetsInlineLimit: 0,
   },
 });
